@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Security/Security.h>
-
+#import <TargetConditionals.h>
 
 /**
  Error code specific to SSKeychain that can be returned in NSError objects.
@@ -21,104 +21,97 @@ typedef enum {
     
 } SSKeychainErrorCode;
 
-extern NSString *const kSSKeychainErrorDomain;
-
-/** Account name. */
-extern NSString *const kSSKeychainAccountKey;
+/** Error domain. */
+extern NSString * const kSSKeychainErrorDomain;
 
 /**
- Time the item was created.
+ Simple wrapper for accessing accounts, getting passwords, setting passwords,
+ and deleting passwords using the system Keychain on Mac OS X and iOS.
  
- The value will be a string.
- */
-extern NSString *const kSSKeychainCreatedAtKey;
-
-/** Item class. */
-extern NSString *const kSSKeychainClassKey;
-
-/** Item description. */
-extern NSString *const kSSKeychainDescriptionKey;
-
-/** Item label. */
-extern NSString *const kSSKeychainLabelKey;
-
-/** Time the item was last modified.
- 
- The value will be a string.
- */
-extern NSString *const kSSKeychainLastModifiedKey;
-
-/** Where the item was created. */
-extern NSString *const kSSKeychainWhereKey;
-
-/**
- Simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system
- Keychain on Mac OS X and iOS.
- 
- This was originally inspired by EMKeychain and SDKeychain (both of which are now gone). Thanks to the authors.
- SSKeychain has since switched to a simpler implementation that was abstracted from [SSToolkit](http://sstoolk.it).
+ This was originally inspired by EMKeychain and SDKeychain (both of which are
+ now gone). Thanks to the authors. SSKeychain has since switched to a simpler
+ implementation that was abstracted from [SSToolkit](http://sstoolk.it).
  */
 @interface SSKeychain : NSObject
+
+///-----------------------
+/// @name Advanced Query Interface
+///-----------------------
+
+/**
+ Return a list of matching accounts for the given query.
+ 
+ A copy of `query` is made and the following changes are applied:
+ 
+ - The value of `kSecMatchLimit` is set to `kSecMatchLimitAll`
+ - The value of `kSecReturnAttributes` is set to `kCFBooleanTrue`
+ 
+ @param query A dictionary containing values suitable for use in
+ `SecItemCopyMatching`.
+ */
+//+ (NSArray *)accountsForQuery:(NSDictionary *)query error:(NSError **)error;
+
+/**
+ 
+ */
+//+ (NSDictionary *)accountForQuery:(NSDictionary *)query error:(NSError **)error;
+
+/**
+ 
+ */
+//+ (BOOL)addItemWithQuery:(NSDictionary *)query error:(NSError **)error;
+
+/**
+ 
+ */
+//+ (BOOL)deleteItemWithQuery:(NSDictionary *)query error:(NSError **)error;
+
 
 ///-----------------------
 /// @name Getting Accounts
 ///-----------------------
 
 /**
- Returns an array containing the Keychain's accounts, or `nil` if the Keychain has no accounts.
- 
- See the `NSString` constants declared in SSKeychain.h for a list of keys that can be used when accessing the
- dictionaries returned by this method.
- 
- @return An array of dictionaries containing the Keychain's accounts, or `nil` if the Keychain doesn't have any
- accounts. The order of the objects in the array isn't defined.
- 
  @see allAccounts:
  */
 + (NSArray *)allAccounts;
 
 /**
- Returns an array containing the Keychain's accounts, or `nil` if the Keychain doesn't have any
- accounts.
+ Returns an array of dictionaries containing the Keychain's accounts. This
+ array will be empty if the keychain has no accounts and `nil` should an error
+ occur.
  
- See the `NSString` constants declared in SSKeychain.h for a list of keys that can be used when accessing the
- dictionaries returned by this method.
+ See the constanst declared in `SecItem.h` for a list of values returned in
+ each resulting dictionary.
  
- @param error If accessing the accounts fails, upon return contains an error that describes the problem.
+ @param error If accessing the accounts fails, upon return contains an error
+ that describes the problem.
  
- @return An array of dictionaries containing the Keychain's accounts, or `nil` if the Keychain doesn't have any
- accounts. The order of the objects in the array isn't defined.
-  
+ @return An array of dictionaries containing the Keychain's accounts, or `nil`
+ if an error occurs. The order of the returned accounts is not determined.
+ 
  @see allAccounts
  */
 + (NSArray *)allAccounts:(NSError **)error;
 
 /**
- Returns an array containing the Keychain's accounts for a given service, or `nil` if the Keychain doesn't have any
- accounts for the given service.
- 
- See the `NSString` constants declared in SSKeychain.h for a list of keys that can be used when accessing the
- dictionaries returned by this method.
- 
- @param serviceName The service for which to return the corresponding accounts.
- 
- @return An array of dictionaries containing the Keychain's accountsfor a given `serviceName`, or `nil` if the Keychain
- doesn't have any accounts for the given `serviceName`. The order of the objects in the array isn't defined.
- 
  @see accountsForService:error:
  */
 + (NSArray *)accountsForService:(NSString *)serviceName;
 
 /**
- Returns an array containing the Keychain's accounts for a given service, or `nil` if the Keychain doesn't have any
- accounts for the given service.
+ Returns an array of dictionaries containing the Keychain's accounts for the
+ given service. This array will be empty if there are no matching accounts
+ and `nil` should an error occur.
  
  @param serviceName The service for which to return the corresponding accounts.
  
- @param error If accessing the accounts fails, upon return contains an error that describes the problem.
+ @param error If accessing the accounts fails, upon return contains an error
+ that describes the problem.
  
- @return An array of dictionaries containing the Keychain's accountsfor a given `serviceName`, or `nil` if the Keychain
- doesn't have any accounts for the given `serviceName`. The order of the objects in the array isn't defined.
+ @return An array of dictionaries containing the Keychain's accounts for the
+ given service, or `nil` if an error occurs. The order of the returned accounts
+ is not determined.
  
  @see accountsForService:
  */

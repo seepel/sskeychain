@@ -22,6 +22,7 @@ static NSString *kSSToolkitTestsPassword = @"SSToolkitTestPassword";
 @implementation SSKeychainTests
 
 - (void)testAll {
+    
 	// Getting & Setings Passwords
 	[SSKeychain setPassword:kSSToolkitTestsPassword forService:kSSToolkitTestsServiceName account:kSSToolkitTestsAccountName];
 	NSString *password = [SSKeychain passwordForService:kSSToolkitTestsServiceName account:kSSToolkitTestsAccountName];
@@ -38,12 +39,18 @@ static NSString *kSSToolkitTestsPassword = @"SSToolkitTestPassword";
 	[SSKeychain deletePasswordForService:kSSToolkitTestsServiceName account:kSSToolkitTestsAccountName];
 	password = [SSKeychain passwordForService:kSSToolkitTestsServiceName account:kSSToolkitTestsAccountName];
 	STAssertNil(password, @"Password deletes");
+    
 }
 
 
 - (BOOL)_accounts:(NSArray *)accounts containsAccountWithName:(NSString *)name {
 	for (NSDictionary *dictionary in accounts) {
-		if ([[dictionary objectForKey:@"acct"] isEqualToString:name]) {
+#if __has_feature(objc_arc)
+        NSString *key = (__bridge NSString *)kSecAttrAccount;
+#else
+        NSString *key = (NSString *)kSecAttrAccount;
+#endif
+		if ([dictionary[key] isEqualToString:name]) {
 			return YES;
 		}
 	}
