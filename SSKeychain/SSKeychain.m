@@ -222,24 +222,21 @@ CFTypeRef SSKeychainAccessibilityType = NULL;
         case errSecSuccess: return nil;
         case SSKeychainErrorBadArguments: message = @"Some of the arguments were invalid"; break;
           
-//#if TARGET_OS_IPHONE
-//        case errSecUnimplemented: message = @"Function or operation not implemented"; break;
-//        case errSecParam: message = @"One or more parameters passed to a function were not valid"; break;
-//        case errSecAllocate: message = @"Failed to allocate memory"; break;
-//        case errSecNotAvailable: message = @"No keychain is available. You may need to restart your computer"; break;
-//        case errSecDuplicateItem: message = @"The specified item already exists in the keychain"; break;
-//        case errSecItemNotFound: message = @"The specified item could not be found in the keychain"; break;
-//        case errSecInteractionNotAllowed: message = @"User interaction is not allowed"; break;
-//        case errSecDecode: message = @"Unable to decode the provided data"; break;
-//        case errSecAuthFailed: message = @"The user name or passphrase you entered is not correct"; break;
-//        default: message = @"Refer to SecBase.h for description";
-//#elif __has_feature(objc_arc)
-//        default:
-//            message = (__bridge_transfer NSString *)SecCopyErrorMessageString(code, NULL);
-//#else
-        default:
+#if TARGET_OS_IPHONE
+        case errSecUnimplemented: message = @"Function or operation not implemented"; break;
+        case errSecParam: message = @"One or more parameters passed to a function were not valid"; break;
+        case errSecAllocate: message = @"Failed to allocate memory"; break;
+        case errSecNotAvailable: message = @"No keychain is available. You may need to restart your computer"; break;
+        case errSecDuplicateItem: message = @"The specified item already exists in the keychain"; break;
+        case errSecItemNotFound: message = @"The specified item could not be found in the keychain"; break;
+        case errSecInteractionNotAllowed: message = @"User interaction is not allowed"; break;
+        case errSecDecode: message = @"Unable to decode the provided data"; break;
+        case errSecAuthFailed: message = @"The user name or passphrase you entered is not correct"; break;
+        default: message = @"Refer to SecBase.h for description";
+#else
+		default:
             message = SSKeychainAutorelease((SSKeychainBridgeTransferCast(NSString *))SecCopyErrorMessageString(code, NULL));
-//#endif
+#endif
     }
     
     NSDictionary *userInfo = nil;
