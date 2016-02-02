@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C034655E1C605D900008F06B /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CC42F017DB878300201DDC /* SSKeychain.m */; };
+		C034655F1C605D900008F06B /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CC42F217DB878300201DDC /* SSKeychainQuery.m */; };
+		C03465601C605DA10008F06B /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CC42EF17DB878300201DDC /* SSKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C03465611C605DA10008F06B /* SSKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CC42F117DB878300201DDC /* SSKeychainQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8A6665B1A844D3A00287CA3 /* SSKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A666341A844CC400287CA3 /* SSKeychain.framework */; };
 		E8A666641A844DB700287CA3 /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CC42EF17DB878300201DDC /* SSKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8A666651A844DB700287CA3 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CC42F017DB878300201DDC /* SSKeychain.m */; };
@@ -58,6 +62,7 @@
 		21CC42F117DB878300201DDC /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
 		21CC42F217DB878300201DDC /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		21CC42F917DB87C300201DDC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C03465551C605D7C0008F06B /* SSKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A666341A844CC400287CA3 /* SSKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A6664F1A844CF100287CA3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8A666551A844D3A00287CA3 /* SSKeychainTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SSKeychainTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +72,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C03465511C605D7C0008F06B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8A666301A844CC400287CA3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +140,7 @@
 				E8A666551A844D3A00287CA3 /* SSKeychainTests-iOS.xctest */,
 				E8A6666F1A844E4100287CA3 /* SSKeychain.framework */,
 				E8A666791A844E4100287CA3 /* SSKeychainTests-OSX.xctest */,
+				C03465551C605D7C0008F06B /* SSKeychain.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +186,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		C03465521C605D7C0008F06B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C03465601C605DA10008F06B /* SSKeychain.h in Headers */,
+				C03465611C605DA10008F06B /* SSKeychainQuery.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8A666311A844CC400287CA3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,6 +216,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		C03465541C605D7C0008F06B /* SSKeychain-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C034655D1C605D7C0008F06B /* Build configuration list for PBXNativeTarget "SSKeychain-watchOS" */;
+			buildPhases = (
+				C03465501C605D7C0008F06B /* Sources */,
+				C03465511C605D7C0008F06B /* Frameworks */,
+				C03465521C605D7C0008F06B /* Headers */,
+				C03465531C605D7C0008F06B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SSKeychain-watchOS";
+			productName = "SSKeychain-watchOS";
+			productReference = C03465551C605D7C0008F06B /* SSKeychain.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		E8A666331A844CC400287CA3 /* SSKeychain-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8A666471A844CC400287CA3 /* Build configuration list for PBXNativeTarget "SSKeychain-iOS" */;
@@ -275,6 +315,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Sam Soffes";
 				TargetAttributes = {
+					C03465541C605D7C0008F06B = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					E8A666331A844CC400287CA3 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -306,11 +349,19 @@
 				E8A666541A844D3A00287CA3 /* SSKeychainTests-iOS */,
 				E8A6666E1A844E4100287CA3 /* SSKeychain-OSX */,
 				E8A666781A844E4100287CA3 /* SSKeychainTests-OSX */,
+				C03465541C605D7C0008F06B /* SSKeychain-watchOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C03465531C605D7C0008F06B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8A666321A844CC400287CA3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,6 +388,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C03465501C605D7C0008F06B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C034655E1C605D900008F06B /* SSKeychain.m in Sources */,
+				C034655F1C605D900008F06B /* SSKeychainQuery.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8A6662F1A844CC400287CA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -504,6 +564,102 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C034655A1C605D7C0008F06B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SSKeychain/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.SSKeychain;
+				PRODUCT_MODULE_NAME = SSKeychain;
+				PRODUCT_NAME = SSKeychain;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		C034655B1C605D7C0008F06B /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SSKeychain/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.SSKeychain;
+				PRODUCT_MODULE_NAME = SSKeychain;
+				PRODUCT_NAME = SSKeychain;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Test;
+		};
+		C034655C1C605D7C0008F06B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SSKeychain/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.SSKeychain;
+				PRODUCT_MODULE_NAME = SSKeychain;
+				PRODUCT_NAME = SSKeychain;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
 			};
 			name = Release;
 		};
@@ -833,6 +989,15 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		C034655D1C605D7C0008F06B /* Build configuration list for PBXNativeTarget "SSKeychain-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C034655A1C605D7C0008F06B /* Debug */,
+				C034655B1C605D7C0008F06B /* Test */,
+				C034655C1C605D7C0008F06B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		E8A666471A844CC400287CA3 /* Build configuration list for PBXNativeTarget "SSKeychain-iOS" */ = {
 			isa = XCConfigurationList;
